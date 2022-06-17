@@ -1,0 +1,63 @@
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    font-size: 10vmin;
+}
+
+.subHeader {
+    font-size: 5vmin;
+}
+
+img {
+    height: auto;
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.bolaniBro {
+    height: 70vmin;
+    width: 70vmin;
+    position: relative;
+    right: 5%
+}
+
+.bolaniChef {
+    width: 60%;
+    bottom: 25%;
+}
+
+.rightBolani {
+    width: 70%;
+    left: -50%;
+    bottom: 1%;
+    z-index: 3;
+}
+
+.leftBolani {
+    width: 70%;
+    left: 65%;
+    bottom: 16%;
+}
+
+.rightSmoke {
+    width: 35%;
+    right: 60%;
+    bottom: 15%;
+    opacity: 75%;
+}
+
+.leftSmoke {
+    width: 40%;
+    left: 80%;
+    bottom: 30%;
+    opacity: 75%;
+}
