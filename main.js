@@ -1,1 +1,1 @@
-console.log("hello");
+(()=>{const e=document.getElementById("content"),t=document.createElement("div");t.textContent="BOLANI BROS",t.className="header",e.appendChild(t);const n=document.createElement("div");n.textContent="Oven Fresh HOT Delicious",n.className="subHeader",e.appendChild(n)})();
