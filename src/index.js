@@ -5,7 +5,8 @@ import leftBolani from './images/leftBolani.png'
 import rightSmoke from './images/rightSmoke.png'
 import leftSmoke from './images/leftSmoke.png'
 
-function homePage() {
+const homePage = (function() {
+
     //cache dom for content div
     const content = document.getElementById('content');
     
@@ -22,7 +23,7 @@ function homePage() {
 
     content.appendChild(subHeader);
 
-    //add Bolani Chef image to be turned into an animated button
+    //add Bolani Chef images to be turned into an animated button
     const bolaniBroDiv = document.createElement('div');
     bolaniBroDiv.className = "bolaniBro";
 
@@ -45,13 +46,26 @@ function homePage() {
     const bolaniChefLeftSmoke = new Image();
     bolaniChefLeftSmoke.className = "leftSmoke"
     bolaniChefLeftSmoke.src = leftSmoke;
-
+    
     bolaniBroDiv.appendChild(bolaniChef);
     bolaniBroDiv.appendChild(bolaniChefRightHand);
     bolaniBroDiv.appendChild(bolaniChefRightSmoke);
     bolaniBroDiv.appendChild(bolaniChefLeftHand);
     bolaniBroDiv.appendChild(bolaniChefLeftSmoke);
     content.appendChild(bolaniBroDiv);
-}
 
-homePage();
+    //bind event listeners to image buttons
+    bolaniChefRightHand.addEventListener("mouseover", () => {
+        bolaniChefRightHand.style.bottom = "10%";
+        bolaniChefRightHand.style.left = "-75%";
+        bolaniChefRightHand.style.cursor = "pointer";
+        bolaniChefRightSmoke.style.opacity = "0";
+    })
+
+    bolaniChefRightHand.addEventListener("mouseleave", () => {
+        bolaniChefRightHand.style.bottom = "1%";
+        bolaniChefRightHand.style.left = "-50%";
+        bolaniChefRightSmoke.style.opacity = "75%";
+    })
+
+})();
