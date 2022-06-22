@@ -13,6 +13,9 @@
     font-size: 5vmin;
 }
 
+.menu,
+.about,
+.contact,
 img {
     height: auto;
     display: block;
@@ -27,12 +30,17 @@ img {
     height: 70vmin;
     width: 70vmin;
     position: relative;
-    right: 5%
+    right: 5%;
+    z-index: 2;
 }
 
 .bolaniChef {
     width: 60%;
     bottom: 25%;
+}
+
+.bolaniChef:active {
+    bottom: 20%;
 }
 
 .rightBolani {
@@ -42,15 +50,24 @@ img {
     z-index: 3;
 }
 
+.rightBolani:active {
+    padding: 5vmin;
+}
+
 .leftBolani {
     width: 70%;
     left: 65%;
     bottom: 16%;
+    z-index: 4;
+}
+
+.leftBolani:active {
+    padding: 5vmin;
 }
 
 .rightSmoke {
     width: 35%;
-    right: 60%;
+    left: -50%;
     bottom: 15%;
     opacity: 75%;
 }
@@ -60,4 +77,31 @@ img {
     left: 80%;
     bottom: 30%;
     opacity: 75%;
+}
+
+.menu {
+    width: fit-content;
+    display: none;
+    background-color: white;
+    font-size: 3vmin;
+    left: -50%;
+    bottom: 30%;
+    z-index: 6;
+}
+
+.about {
+    display: none;
+    font-size: 3vmin;
+    bottom: 85%;
+    left: 52%;
+}
+
+.contact {
+    width: fit-content;
+    background-color: white;
+    display: none;
+    font-size: 3vmin;
+    left: 92%;
+    bottom: 42%;
+    z-index: 7;
 }
