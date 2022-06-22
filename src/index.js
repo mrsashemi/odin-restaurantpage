@@ -16,12 +16,12 @@ const content = document.getElementById('content');
 function pageLoad() {
     window.addEventListener('load', () => {
         setTimeout(() => {
-            fadeIn(content, 10, "flex");
-        }, 1000);
+            fadeIn(content, 5, "flex");
+        }, 500);
     })
 }
 
-pageLoad()
+pageLoad();
 
 ////create header and subheader for restaurant homepage
 const header = document.createElement('div');
@@ -43,6 +43,7 @@ content.appendChild(subHeader);
 ///////////////////////////////////////////////////////////////////////////////
 
 const bolaniBroButton = function() {
+
      ////add Bolani Chef images to be turned into an animated button
      const bolaniBroDiv = document.createElement('div');
      bolaniBroDiv.className = "bolaniBro";
@@ -132,16 +133,13 @@ const bolaniBroButton = function() {
          fadeIn(bolaniChefLeftSmoke, 20, "block")
          fadeOut(contactUs)
      })
-
-     ////reveal
-     return {bolaniBroDiv}
      
 };
 
 bolaniBroButton();
 
 
-  ///////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////
  //add functions to fade element for additional image button styles//
 ////////////////////////////////////////////////////////////////////
 
@@ -169,4 +167,14 @@ function fadeIn(e, time, display) {
         e.style.filter = `alpha(opacity = ${o * 100})`;
         o += o * 0.1;
     }, time);
+}
+
+export {
+    content,
+    header,
+    subHeader,
+    pageLoad,
+    bolaniBroButton,
+    fadeIn,
+    fadeOut
 }
