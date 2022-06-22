@@ -1,6 +1,6 @@
 import { subHeader } from "./index";
 
-////menu page 
+////Menu Page 
 export function menuPage() {
     subHeader.textContent = "Menu AND Location"
 

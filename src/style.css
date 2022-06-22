@@ -136,3 +136,24 @@ li {
     font-size: 2.25vmin;
     margin: 1vmin;
 }
+
+.contactPage {
+    font-size: 3.5vmin;
+    margin-top: 2vmin;
+}
+
+
+label {
+    font-size: 2.25vmin;
+    margin: 0.5vmin;
+}
+
+#fname,
+#lname,
+#email {
+    margin-right: 4vmin;
+}
+
+#userForm {
+    margin-top: 4vmin;
+}

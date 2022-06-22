@@ -6,6 +6,7 @@ import rightSmoke from './images/rightSmoke.png'
 import leftSmoke from './images/leftSmoke.png'
 import { menuPage } from './menu'
 import { aboutPage } from './about'
+import { contactPage } from './contact'
 
   ////////////////////////////////////////////////////////////////////
  //ES6 Modules - Start by generating the page content using JS only//
@@ -106,6 +107,10 @@ const bolaniBroButton = function() {
          bolaniChef.style.filter = "none";
          fadeOut(aboutUs);
      })
+
+     bolaniChef.addEventListener("click", () => {
+        aboutPage();
+    })
  
      ////bind event listener for the Menu page onto the right hand
      bolaniChefRightHand.addEventListener("mouseenter", () => {
@@ -140,7 +145,7 @@ const bolaniBroButton = function() {
      })
 
      bolaniChefLeftHand.addEventListener("click", () => {
-        aboutPage();
+        contactPage();
     })
      
 };
