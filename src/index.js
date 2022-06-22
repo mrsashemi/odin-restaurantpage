@@ -4,6 +4,8 @@ import rightBolani from './images/rightBolani.png'
 import leftBolani from './images/leftBolani.png'
 import rightSmoke from './images/rightSmoke.png'
 import leftSmoke from './images/leftSmoke.png'
+import { menuPage } from './menu'
+import { aboutPage } from './about'
 
   ////////////////////////////////////////////////////////////////////
  //ES6 Modules - Start by generating the page content using JS only//
@@ -30,12 +32,11 @@ header.className = "header"
 
 content.appendChild(header);
 
-const subHeader = document.createElement('div');
+export const subHeader = document.createElement('div');
 subHeader.textContent = "Oven Fresh HOT Delicious"
 subHeader.className = "subHeader"
 
 content.appendChild(subHeader);
-
 
 
   ///////////////////////////////////////////////////////////////////////////////
@@ -119,6 +120,10 @@ const bolaniBroButton = function() {
          fadeIn(bolaniChefRightSmoke, 20, "block");
          fadeOut(menuAndLocation)
      })
+
+     bolaniChefRightHand.addEventListener("click", () => {
+         menuPage();
+     })
      
      ////bind event listener for the Contact page onto the left hand
      bolaniChefLeftHand.addEventListener("mouseenter", () => {
@@ -133,6 +138,10 @@ const bolaniBroButton = function() {
          fadeIn(bolaniChefLeftSmoke, 20, "block")
          fadeOut(contactUs)
      })
+
+     bolaniChefLeftHand.addEventListener("click", () => {
+        aboutPage();
+    })
      
 };
 
@@ -169,12 +178,3 @@ function fadeIn(e, time, display) {
     }, time);
 }
 
-export {
-    content,
-    header,
-    subHeader,
-    pageLoad,
-    bolaniBroButton,
-    fadeIn,
-    fadeOut
-}
