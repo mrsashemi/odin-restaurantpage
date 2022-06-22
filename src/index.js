@@ -5,43 +5,44 @@ import leftBolani from './images/leftBolani.png'
 import rightSmoke from './images/rightSmoke.png'
 import leftSmoke from './images/leftSmoke.png'
 
-  //////////////////////////////////////////////////////////////
- //Use revealing module pattern to create restaurant homepage//
-//////////////////////////////////////////////////////////////
-const pageContent = (function() {
+  ////////////////////////////////////////////////////////////////////
+ //ES6 Modules - Start by generating the page content using JS only//
+////////////////////////////////////////////////////////////////////
 
-    ////cache dom for content div
-    const content = document.getElementById('content');
+////cache dom for content div
+const content = document.getElementById('content');
 
-    ////load in the page with a fade
+////load in the page with a fade effect
+function pageLoad() {
     window.addEventListener('load', () => {
-        fade.fadeIn(header, 50);
-        fade.fadeIn(subHeader, 50);
-        fade.fadeIn(bolaniBroButton.bolaniBroDiv, 50);
+        setTimeout(() => {
+            fadeIn(content, 10, "flex");
+        }, 1000);
     })
-    
-    ////create header and subheader for restaurant homepage
-    const header = document.createElement('div');
-    header.textContent = "BOLANI BROS"
-    header.className = "header"
+}
 
-    content.appendChild(header);
+pageLoad()
 
-    const subHeader = document.createElement('div');
-    subHeader.textContent = "Oven Fresh HOT Delicious"
-    subHeader.className = "subHeader"
+////create header and subheader for restaurant homepage
+const header = document.createElement('div');
+header.textContent = "BOLANI BROS"
+header.className = "header"
 
-    content.appendChild(subHeader);
+content.appendChild(header);
 
-    ////reveal
-    return {content, header, subHeader}
-})();
+const subHeader = document.createElement('div');
+subHeader.textContent = "Oven Fresh HOT Delicious"
+subHeader.className = "subHeader"
+
+content.appendChild(subHeader);
 
 
-  //////////////////////////////////////////////////////
- //Use another module to create the bolani bro button//
-//////////////////////////////////////////////////////
-const bolaniBroButton = (function() {
+
+  ///////////////////////////////////////////////////////////////////////////////
+ //Use a function to generate the Bolani Bro image and render it into a button//
+///////////////////////////////////////////////////////////////////////////////
+
+const bolaniBroButton = function() {
      ////add Bolani Chef images to be turned into an animated button
      const bolaniBroDiv = document.createElement('div');
      bolaniBroDiv.className = "bolaniBro";
@@ -71,7 +72,7 @@ const bolaniBroButton = (function() {
      bolaniBroDiv.appendChild(bolaniChefRightSmoke);
      bolaniBroDiv.appendChild(bolaniChefLeftHand);
      bolaniBroDiv.appendChild(bolaniChefLeftSmoke);
-     pageContent.content.appendChild(bolaniBroDiv);
+     content.appendChild(bolaniBroDiv);
 
      ////add divs containing text-content for buttons to be revealed upon hovering over image
      const menuAndLocation = document.createElement('div')
@@ -96,80 +97,76 @@ const bolaniBroButton = (function() {
          //filters borrowed from CSS filter generator by Barrett Sonntag on codepen.io
          bolaniChef.style.filter = `invert(12%) sepia(91%) saturate(6150%) hue-rotate(146deg) brightness(101%) contrast(105%)`;
          bolaniChef.style.cursor = "pointer";
-         fade.fadeIn(aboutUs, 20);
+         fadeIn(aboutUs, 20, "block");
      })
  
      bolaniChef.addEventListener("mouseleave", () => {
          bolaniChef.style.filter = "none";
-         fade.fadeOut(aboutUs);
+         fadeOut(aboutUs);
      })
  
      ////bind event listener for the Menu page onto the right hand
      bolaniChefRightHand.addEventListener("mouseenter", () => {
          bolaniChefRightHand.style.filter = `invert(12%) sepia(91%) saturate(6150%) hue-rotate(146deg) brightness(101%) contrast(105%)`;
          bolaniChefRightHand.style.cursor = "pointer";
-         fade.fadeOut(bolaniChefRightSmoke);
-         fade.fadeIn(menuAndLocation, 20);
+         fadeOut(bolaniChefRightSmoke);
+         fadeIn(menuAndLocation, 20, "block");
      })
  
      bolaniChefRightHand.addEventListener("mouseleave", () => {
          bolaniChefRightHand.style.filter = "none";
-         fade.fadeIn(bolaniChefRightSmoke, 20);
-         fade.fadeOut(menuAndLocation)
+         fadeIn(bolaniChefRightSmoke, 20, "block");
+         fadeOut(menuAndLocation)
      })
      
      ////bind event listener for the Contact page onto the left hand
      bolaniChefLeftHand.addEventListener("mouseenter", () => {
          bolaniChefLeftHand.style.filter = `invert(12%) sepia(91%) saturate(6150%) hue-rotate(146deg) brightness(101%) contrast(105%)`;
          bolaniChefLeftHand.style.cursor = "pointer";
-         fade.fadeOut(bolaniChefLeftSmoke);
-         fade.fadeIn(contactUs, 20);
+         fadeOut(bolaniChefLeftSmoke);
+         fadeIn(contactUs, 20, "block");
      })
  
      bolaniChefLeftHand.addEventListener("mouseleave", () => {
          bolaniChefLeftHand.style.filter = "none";
-         fade.fadeIn(bolaniChefLeftSmoke, 20)
-         fade.fadeOut(contactUs)
+         fadeIn(bolaniChefLeftSmoke, 20, "block")
+         fadeOut(contactUs)
      })
 
      ////reveal
      return {bolaniBroDiv}
      
-})();
+};
+
+bolaniBroButton();
 
 
-  ////////////////////////////////////////////////////////////
- //Use another module to simulate a fade effect for content//
-////////////////////////////////////////////////////////////
-const fade = (function() {
-    ////add functions to fade element for additional image button styles
-    function fadeOut(e) {
-        let o = 0.75;
-        let timer = setInterval(function() {
-            if (o <= 0.1) {
-                clearInterval(timer);
-                e.style.display = "none";
-            }
-            e.style.opacity = o;
-            e.style.filter = `alpha(opacity = ${o * 100})`;
-            o -= o * 0.1;
-        }, 20)
-    }
-    
-    function fadeIn(e, time) {
-        let o = 0.1;
-        e.style.display = "block";
-        let timer = setInterval(function() {
-            if (o >= 0.75){
-                clearInterval(timer);
-            }
-            e.style.opacity = o;
-            e.style.filter = `alpha(opacity = ${o * 100})`;
-            o += o * 0.1;
-        }, time);
-    }
+  ///////////////////////////////////////////////////////////////////
+ //add functions to fade element for additional image button styles//
+////////////////////////////////////////////////////////////////////
 
-    ////reveal
-    return {fadeOut, fadeIn}
-    
-})();
+function fadeOut(e) {
+    let o = 0.75;
+    let timer = setInterval(function() {
+        if (o <= 0.1) {
+            clearInterval(timer);
+            e.style.display = "none";
+        }
+        e.style.opacity = o;
+        e.style.filter = `alpha(opacity = ${o * 100})`;
+        o -= o * 0.1;
+    }, 20)
+}
+
+function fadeIn(e, time, display) {
+    let o = 0.1;
+    e.style.display = display;
+    let timer = setInterval(function() {
+        if (o >= 0.75){
+            clearInterval(timer);
+        }
+        e.style.opacity = o;
+        e.style.filter = `alpha(opacity = ${o * 100})`;
+        o += o * 0.1;
+    }, time);
+}
