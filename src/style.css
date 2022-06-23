@@ -1,3 +1,15 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2vmin;
+    overflow: hidden;
+}
+
+footer {
+    text-align: center;
+}
+
 #content {
     display: none;
     flex-direction: column;
